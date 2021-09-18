@@ -1,36 +1,36 @@
 <app-navbar></app-navbar>
-
-<hello name="{{ name }}"></hello>
-<div class="timebutton">
-  <h2>Contador</h2>
-  <span class="timer">{{ timer.getCount() }}s</span>
-</div>
-<div class="box-bitcoin">
-  <div *ngIf="bitcoinService.currentResponse">
-    <div>
-      {{ bitcoinService.currentResponse.time.updated }}
+<div class="container">
+  <hello name="{{ name }}"></hello>
+  <div class="timebutton">
+    <span class="timer">{{ timer.getCount() }}s</span>
+  </div>
+  <div class="box-bitcoin">
+    <div *ngIf="bitcoinService.currentResponse">
+      <div>
+        {{ bitcoinService.currentResponse.time.updated }}
+      </div>
+      <div>
+        Valor do bitcoin em dólares: $
+        <span [innerHTML]="bitcoinService.currentResponse.bpi.USD.symbol"></span
+        >{{ bitcoinService.currentResponse.bpi.USD.rate }}
+      </div>
+      <div>
+        Valor do bitcoin em reais: R$
+        <span [innerHTML]="bitcoinService.currentResponse.bpi.BRL.symbol"></span
+        >{{ bitcoinService.currentResponse.bpi.BRL.rate }}
+      </div>
+      <table style="border=1">
+        <tr>
+          <th>Data / hora</th>
+          <th>USD</th>
+          <th>BRL</th>
+        </tr>
+        <tr *ngFor="let response of this.bitcoinService.updateList">
+          <td>{{ response.time.updated }}</td>
+          <td>$ {{ response.bpi.USD.rate }}</td>
+          <td>R$ {{ response.bpi.BRL.rate }}</td>
+        </tr>
+      </table>
     </div>
-    <div>
-      Valor do bitcoin em dólares: $
-      <span [innerHTML]="bitcoinService.currentResponse.bpi.USD.symbol"></span
-      >{{ bitcoinService.currentResponse.bpi.USD.rate }}
-    </div>
-    <div>
-      Valor do bitcoin em reais: R$
-      <span [innerHTML]="bitcoinService.currentResponse.bpi.BRL.symbol"></span
-      >{{ bitcoinService.currentResponse.bpi.BRL.rate }}
-    </div>
-    <table style="border=1">
-      <tr>
-        <th>Data / hora</th>
-        <th>USD</th>
-        <th>BRL</th>
-      </tr>
-      <tr *ngFor="let response of this.bitcoinService.updateList">
-        <td>{{ response.time.updated }}</td>
-        <td>$ {{ response.bpi.USD.rate }}</td>
-        <td>R$ {{ response.bpi.BRL.rate }}</td>
-      </tr>
-    </table>
   </div>
 </div>
