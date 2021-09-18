@@ -1,0 +1,17 @@
+.header {
+  background-color: rgb(54, 54, 54);
+  display: flex;
+  margin: 0;
+  padding: 20px;
+}
+
+.div-est {
+  display: inline-flex;
+  justify-content: center;
+  color: white;
+}
+
+.div-est a {
+  color: rgb(19, 146, 114);
+  font-weight: 600;
+}
